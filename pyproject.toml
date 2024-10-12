@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "video-classification"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "readme.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+# https://stackoverflow.com/a/78511183/14238358
+# I haven't configured my graphics card.
+torch = { version = "^2.4.1", source="torchcpu", markers = "sys_platform == 'linux' and extra == 'cpu'" }
+torchvision = { version = "^0.19.1", source="torchcpu", markers = "sys_platform == 'linux' and extra == 'cpu'" }
+transformers = "^4.45.2"
+huggingface-hub = "^0.25.2"
+
+# AI interfaces?
+gradio = "^5.0.2"
+# Video loader
+decord = "^0.6.0"
+# Easy YouTube video downloader
+pytube = "^15.0.0"
+# Image manipulator
+imageio = "^2.35.1"
+
+[[tool.poetry.source]]
+name = "torchcpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
